@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2026 Federal TD1 - Webform</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; display: flex; gap: 30px; background-color: #f4f4f9; }
+        .form-container, .master-container { background: #fff; border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .form-container { width: 500px; }
+        .master-container { width: 450px; border: 2px solid #0056b3; }
+        h3 { margin-top: 0; color: #2c3e50; border-bottom: 2px solid #0056b3; padding-bottom: 5px; }
+        h4 { margin-bottom: 5px; color: #34495e; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; color: #333; }
+        .help-text { font-size: 11px; color: #666; margin-bottom: 4px; display: block; }
+        .warning-text { font-size: 11px; color: red; display: none; margin-top: 2px; }
+        input[type="number"], input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #aaa; border-radius: 4px; }
+        input[readonly] { background-color: #e9ecef; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+        .checkbox-group input { width: auto; }
+        button { margin-top: 20px; padding: 10px 20px; width: 100%; background: #0056b3; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background: #004494; }
+        hr { margin: 20px 0; border: 0.5px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <!-- Source Form: TD1 2026 -->
+    <div class="form-container">
+        <h3>2026 Personal Tax Credits Return (TD1)</h3>
+        <form id="td1-carbon-form">
+            
+            <h4>Tax Credit Amounts</h4>
+            <div class="form-group">
+                <label>1. Basic personal amount</label>
+                <span class="help-text">Standard amount is $16,452.</span>
+                <input type="number" id="td1_line1" name="td1_line1" value="16452" required>
+            </div>
+            <div class="form-group">
+                <label>2. Canada caregiver amount for infirm children under age 18</label>
+                <input type="number" id="td1_line2" name="td1_line2" value="0">
+            </div>
+            <div class="form-group">
+                <label>3. Age amount</label>
+                <span class="help-text">Max $9,208.</span>
+                <input type="number" id="td1_line3" name="td1_line3" value="0" max="9208">
+                <span class="warning-text" id="warning_line3">Value capped at maximum allowable $9,208.</span>
+            </div>
+            <div class="form-group">
+                <label>4. Pension income amount</label>
+                <span class="help-text">Max $2,000.</span>
+                <input type="number" id="td1_line4" name="td1_line4" value="0" max="2000">
+                <span class="warning-text" id="warning_line4">Value capped at maximum allowable $2,000.</span>
+            </div>
+            <div class="form-group">
+                <label>5. Tuition (full-time and part-time)</label>
+                <input type="number" id="td1_line5" name="td1_line5" value="0">
+            </div>
+            <div class="form-group">
+                <label>6. Disability amount</label>
+                <span class="help-text">Enter $10,341 if using Form T2201.</span>
+                <input type="number" id="td1_line6" name="td1_line6" value="0">
+            </div>
+            <div class="form-group">
+                <label>7. Spouse or common-law partner amount</label>
+                <input type="number" id="td1_line7" name="td1_line7" value="0">
+            </div>
+            <div class="form-group">
+                <label>8. Amount for an eligible dependant</label>
+                <input type="number" id="td1_line8" name="td1_line8" value="0">
+            </div>
+            <div class="form-group">
+                <label>9. Canada caregiver amount for eligible dependant or spouse</label>
+                <input type="number" id="td1_line9" name="td1_line9" value="0">
+            </div>
+            <div class="form-group">
+                <label>10. Canada caregiver amount for dependant(s) age 18 or older</label>
+                <input type="number" id="td1_line10" name="td1_line10" value="0">
+            </div>
+            <div class="form-group">
+                <label>11. Amounts transferred from your spouse or common-law partner</label>
+                <input type="number" id="td1_line11" name="td1_line11" value="0">
+            </div>
+            <div class="form-group">
+                <label>12. Amounts transferred from a dependant</label>
+                <input type="number" id="td1_line12" name="td1_line12" value="0">
+            </div>
+            <div class="form-group">
+                <label>13. TOTAL CLAIM AMOUNT (Lines 1 to 12)</label>
+                <input type="number" id="td1_line13" name="td1_line13" readonly>
+            </div>
+
+            <hr>
+            <h4>Page 2 Declarations & Additional Deductions</h4>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="td1_multiple_employers" name="td1_multiple_employers">
+                <label for="td1_multiple_employers">More than one employer or payer at the same time</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="td1_total_less" name="td1_total_less">
+                <label for="td1_total_less">Total income is less than the total claim amount</label>
+            </div>
+            
+            <div class="form-group">
+                <label>For non-residents only (90% or more of world income in Canada?)</label>
+                <div class="checkbox-group">
+                    <input type="radio" id="non_resident_yes" name="td1_non_resident" value="Yes"> Yes
+                    <input type="radio" id="non_resident_no" name="td1_non_resident" value="No"> No
+                    <input type="radio" id="non_resident_na" name="td1_non_resident" value="N/A" checked> N/A
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Deduction for living in a prescribed zone</label>
+                <input type="number" id="td1_zone_deduction" name="td1_zone_deduction" value="0">
+            </div>
+            <div class="form-group">
+                <label>Additional tax to be deducted</label>
+                <input type="number" id="td1_additional_tax" name="td1_additional_tax" value="0">
+            </div>
+
+            <button type="submit">Submit to Master Form</button>
+        </form>
+    </div>
+
+    <!-- Master Form Display -->
+    <div class="master-container">
+        <h3>Master Form Data Record</h3>
+        <form id="master-form">
+            <div class="form-group">
+                <label>Total Claim Amount (Line 13)</label>
+                <input type="text" id="master_line13" readonly>
+            </div>
+            <div class="form-group">
+                <label>Multiple Employers / Payers</label>
+                <input type="text" id="master_multiple_employers" readonly>
+            </div>
+            <div class="form-group">
+                <label>Income less than Claim Amount</label>
+                <input type="text" id="master_total_less" readonly>
+            </div>
+            <div class="form-group">
+                <label>Non-Resident Status (90%+ income)</label>
+                <input type="text" id="master_non_resident" readonly>
+            </div>
+            <div class="form-group">
+                <label>Prescribed Zone Deduction</label>
+                <input type="text" id="master_zone_deduction" readonly>
+            </div>
+            <div class="form-group">
+                <label>Additional Tax Deducted</label>
+                <input type="text" id="master_additional_tax" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const formInputs = document.querySelectorAll('#td1-carbon-form input[type="number"]');
+        const line13Input = document.getElementById('td1_line13');
+        const multipleEmployersCheckbox = document.getElementById('td1_multiple_employers');
+        
+        // Enforce maximums on input
+        function enforceMaxConstraints(e) {
+            const input = e.target;
+            const maxVal = parseFloat(input.getAttribute('max'));
+            const warningSpan = document.getElementById('warning_' + input.id.replace('td1_', ''));
+            
+            if (maxVal && parseFloat(input.value) > maxVal) {
+                input.value = maxVal; // Cap the value
+                if(warningSpan) warningSpan.style.display = 'block'; // Show warning
+            } else {
+                if(warningSpan) warningSpan.style.display = 'none'; // Hide warning
+            }
+        }
+
+        // Auto-calculate Line 13 (Total Claim Amount)
+        function calculateTotal() {
+            if (multipleEmployersCheckbox.checked) {
+                line13Input.value = 0;
+                return;
+            }
+            
+            let total = 0;
+            for (let i = 1; i <= 12; i++) {
+                let val = parseFloat(document.getElementById('td1_line' + i).value) || 0;
+                total += val;
+            }
+            line13Input.value = total;
+        }
+
+        formInputs.forEach(input => {
+            if (input.id !== 'td1_line13' && input.id !== 'td1_zone_deduction' && input.id !== 'td1_additional_tax') {
+                input.addEventListener('input', (e) => {
+                    enforceMaxConstraints(e);
+                    calculateTotal();
+                });
+            }
+        });
+        multipleEmployersCheckbox.addEventListener('change', calculateTotal);
+
+        // Run calculation on load
+        calculateTotal();
+
+        // Handle Form Submission
+        document.getElementById('td1-carbon-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const formData = new FormData(this);
+            
+            document.getElementById('master_line13').value = "$" + document.getElementById('td1_line13').value;
+            document.getElementById('master_zone_deduction').value = "$" + formData.get('td1_zone_deduction');
+            document.getElementById('master_additional_tax').value = "$" + formData.get('td1_additional_tax');
+            
+            document.getElementById('master_multiple_employers').value = document.getElementById('td1_multiple_employers').checked ? "Yes" : "No";
+            document.getElementById('master_total_less').value = document.getElementById('td1_total_less').checked ? "Yes" : "No";
+            document.getElementById('master_non_resident').value = formData.get('td1_non_resident');
+
+            alert("Data with constraints applied has been successfully passed to the Master Form!");
+        });
+    </script>
+</body>
+</html>

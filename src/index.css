@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 576px;
+}
+
+/* Strict mobile-first styling and overflow controls */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Mobile-first iOS Safari auto-zoom prevention (16px base on mobile, 14px on desktop) */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="date"],
+select,
+textarea {
+  font-size: 16px !important;
+}
+
+@media (min-width: 576px) {
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 14px !important;
+  }
+}
+
+/* Touch-friendly scrolling for tables and rosters */
+.mobile-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scrollbar hide utility for tab bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe word break for tokens, emails, and URLs */
+.break-words-safe {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* OpenStreetMap and Leaflet engine styling */
+.leaflet-container {
+  font-family: inherit !important;
+}
+
+.custom-gps-marker {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+}
+
+.osm-tiles-dark {
+  filter: invert(100%) hue-rotate(180deg) brightness(88%) contrast(92%);
+}
+
+.osm-tiles-light {
+  filter: none;
+}
+

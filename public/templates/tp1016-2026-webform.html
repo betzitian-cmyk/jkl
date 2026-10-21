@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2026 Québec TP-1016-V - Webform</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; display: flex; gap: 30px; background-color: #f4f4f9; }
+        .form-container, .master-container { background: #fff; border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .form-container { width: 560px; }
+        .master-container { width: 440px; border: 2px solid #005a70; height: fit-content; }
+        h3 { margin-top: 0; color: #005a70; border-bottom: 2px solid #005a70; padding-bottom: 5px; }
+        h4 { margin-top: 15px; margin-bottom: 8px; color: #2c3e50; border-bottom: 1px dashed #ccc; padding-bottom: 3px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; color: #333; }
+        .help-text { font-size: 11px; color: #666; margin-bottom: 4px; display: block; }
+        .warning-text { font-size: 11px; color: #d9534f; display: none; margin-top: 4px; font-weight: bold; }
+        input[type="number"], input[type="text"], input[type="date"], select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #aaa; border-radius: 4px; }
+        input[readonly] { background-color: #e9ecef; font-weight: bold; color: #005a70; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; font-size: 13px; }
+        .checkbox-option { display: flex; align-items: flex-start; gap: 8px; }
+        .checkbox-option input[type="checkbox"] { margin-top: 3px; }
+        .highlight-box { background-color: #f8f9fa; border: 1px solid #005a70; padding: 12px; border-radius: 5px; margin-top: 10px; }
+        .conditional-box { background-color: #eef7f9; border: 1px solid #bce1e8; padding: 12px; border-radius: 5px; margin-top: 10px; display: none; }
+        button { margin-top: 20px; padding: 10px 20px; width: 100%; background: #005a70; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background: #004252; }
+        hr { margin: 20px 0; border: 0.5px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <!-- Source Form: Québec TP-1016-V -->
+    <div class="form-container">
+        <h3>Application for a Reduction in Source Deductions of Income Tax (TP-1016-V)</h3>
+        <p class="help-text">Generally requires deductions of $2,000 or more, or tax credits of $400 or more not shown on Form TP-1015.3-V.</p>
+
+        <form id="tp1016-form">
+            
+            <div class="form-group">
+                <label>Taxation Year</label>
+                <input type="number" id="tp1016_tax_year" name="tp1016_tax_year" value="2026" required>
+            </div>
+
+            <h4>1. Information about the applicant</h4>
+            <div class="form-group">
+                <label>Applicant Name (First & Last)</label>
+                <input type="text" id="tp1016_applicant_name" name="tp1016_applicant_name" required>
+            </div>
+            <div class="form-group">
+                <label>Professional Name (if applicable)</label>
+                <input type="text" id="tp1016_prof_name" name="tp1016_prof_name">
+            </div>
+
+            <h4>2. Information about the employer or payer</h4>
+            <div class="form-group">
+                <label>Payer / Employer Name</label>
+                <input type="text" id="tp1016_payer_name" name="tp1016_payer_name" required>
+            </div>
+
+            <h4>3. Information about the remuneration</h4>
+            <div class="checkbox-group">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="remun_salary" name="tp1016_remun" value="Salary">
+                    <label for="remun_salary">Salary or wages (other than a lump-sum payment)</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="remun_lump" name="tp1016_remun" value="Lump-sum">
+                    <label for="remun_lump">Lump-sum payment of salary or wages (e.g., bonus, vacation pay)</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="remun_other" name="tp1016_remun" value="Other">
+                    <label for="remun_other">Other payment (e.g., single payment from RRSP or RRIF)</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="remun_treaty" name="tp1016_remun" value="Treaty Exempt">
+                    <label for="remun_treaty">Amount exempt under tax agreement/treaty</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="remun_non_resident" name="tp1016_remun" value="Non-resident services">
+                    <label for="remun_non_resident">Payment for services rendered in Québec by a non-resident</label>
+                </div>
+            </div>
+
+            <h4>4. Deductions and tax credits</h4>
+            
+            <strong>4.1 Deductions</strong>
+            <div class="form-group">
+                <label>Line 1: Contributions to an RRSP (not withheld at source)</label>
+                <input type="number" id="tp1016_line1" name="tp1016_line1" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label>Line 2: Employment expenses (Forms TP-64.3-V & TP-59-V)</label>
+                <input type="number" id="tp1016_line2" name="tp1016_line2" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label>Line 3: Other deductions</label>
+                <input type="number" id="tp1016_line3" name="tp1016_line3" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label>Line 5: Total Deductions (Lines 1 to 3)</label>
+                <input type="number" id="tp1016_line5" name="tp1016_line5" value="0" readonly>
+            </div>
+            <div class="form-group">
+                <label>Line 8: Estimated income not subject to source deductions</label>
+                <span class="help-text">e.g., interest, taxable dividends, net business or net rental income</span>
+                <input type="number" id="tp1016_line8" name="tp1016_line8" value="0" min="0">
+            </div>
+            <div class="form-group highlight-box">
+                <label>Line 10: Net Deductions (Line 5 minus Line 8)</label>
+                <input type="number" id="tp1016_line10" name="tp1016_line10" value="0" readonly>
+            </div>
+
+            <strong style="display:block; margin-top:15px;">4.2 Tax Credits</strong>
+            <div class="form-group">
+                <label>Line 11: Tax credit respecting a labour-sponsored fund</label>
+                <input type="number" id="tp1016_line11" name="tp1016_line11" value="0" min="0">
+            </div>
+            <div class="form-group">
+                <label>Line 12: Other tax credits (e.g., donations, foreign tax credit)</label>
+                <input type="number" id="tp1016_line12" name="tp1016_line12" value="0" min="0">
+            </div>
+            <div class="form-group highlight-box">
+                <label>Line 15: Total Tax Credits (Lines 11 + 12)</label>
+                <input type="number" id="tp1016_line15" name="tp1016_line15" value="0" readonly>
+            </div>
+
+            <!-- Threshold Rule Validation Warning -->
+            <div class="warning-text" id="threshold_warning">
+                Notice: An application generally requires net deductions of at least $2,000 (Line 10) OR tax credits of at least $400 (Line 15).
+            </div>
+
+            <!-- Part 5: Non-Resident Services Section (Conditional) -->
+            <div class="conditional-box" id="part5_section">
+                <h4 style="margin-top:0;">5. Services rendered in Québec by a non-resident</h4>
+                
+                <div class="form-group">
+                    <label>5.1 Type of Applicant</label>
+                    <select id="tp1016_applicant_type" name="tp1016_applicant_type">
+                        <option value="Individual - Employee">Individual (Employee)</option>
+                        <option value="Individual - Self-Employed">Individual (Self-Employed)</option>
+                        <option value="Unincorporated Group">Unincorporated Group</option>
+                        <option value="Partnership">Partnership</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>5.2 Additional Contract Payments Amount</label>
+                    <input type="number" id="tp1016_add_payments" name="tp1016_add_payments" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>5.3 Date of Arrival in Québec</label>
+                    <input type="date" id="tp1016_arrival_date" name="tp1016_arrival_date">
+                </div>
+                <div class="form-group">
+                    <label>5.3 Date of Departure from Québec</label>
+                    <input type="date" id="tp1016_departure_date" name="tp1016_departure_date">
+                </div>
+            </div>
+
+            <button type="submit">Submit TP-1016-V to Master Form</button>
+        </form>
+    </div>
+
+    <!-- Master Form Display -->
+    <div class="master-container">
+        <h3>Master Form Record (TP-1016-V Data)</h3>
+        <form id="master-form">
+            <div class="form-group">
+                <label>Taxation Year</label>
+                <input type="text" id="master_tax_year" readonly>
+            </div>
+            <div class="form-group">
+                <label>Applicant Name</label>
+                <input type="text" id="master_applicant_name" readonly>
+            </div>
+            <div class="form-group">
+                <label>Payer / Employer</label>
+                <input type="text" id="master_payer_name" readonly>
+            </div>
+
+            <hr>
+            <strong>Evaluated Amounts</strong>
+            
+            <div class="form-group" style="margin-top: 10px;">
+                <label>Evaluated Net Deductions (Line 10)</label>
+                <input type="text" id="master_line10" readonly>
+            </div>
+            <div class="form-group">
+                <label>Evaluated Total Tax Credits (Line 15)</label>
+                <input type="text" id="master_line15" readonly>
+            </div>
+            <div class="form-group">
+                <label>Minimum Threshold Met?</label>
+                <input type="text" id="master_threshold_status" readonly>
+            </div>
+
+            <hr>
+            <strong>Non-Resident Status</strong>
+            <div class="form-group" style="margin-top: 10px;">
+                <label>Non-Resident Services Included?</label>
+                <input type="text" id="master_non_resident_status" readonly>
+            </div>
+            <div class="form-group">
+                <label>Applicant Type / Service Details</label>
+                <input type="text" id="master_non_resident_details" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const numberInputs = document.querySelectorAll('#tp1016-form input[type="number"]');
+        const nonResCheckbox = document.getElementById('remun_non_resident');
+        const part5Section = document.getElementById('part5_section');
+        const thresholdWarning = document.getElementById('threshold_warning');
+
+        // Toggle non-resident conditional fields
+        function toggleNonResidentSection() {
+            if (nonResCheckbox.checked) {
+                part5Section.style.display = 'block';
+            } else {
+                part5Section.style.display = 'none';
+            }
+        }
+
+        // Calculation and Constraint Logic
+        function calculateTotals() {
+            let l1 = parseFloat(document.getElementById('tp1016_line1').value) || 0;
+            let l2 = parseFloat(document.getElementById('tp1016_line2').value) || 0;
+            let l3 = parseFloat(document.getElementById('tp1016_line3').value) || 0;
+            
+            let line5 = l1 + l2 + l3;
+            document.getElementById('tp1016_line5').value = line5.toFixed(2);
+
+            let l8 = parseFloat(document.getElementById('tp1016_line8').value) || 0;
+            
+            // Constraint: Line 10 = Line 5 - Line 8 (if negative, set to 0)
+            let line10 = Math.max(0, line5 - l8);
+            document.getElementById('tp1016_line10').value = line10.toFixed(2);
+
+            let l11 = parseFloat(document.getElementById('tp1016_line11').value) || 0;
+            let l12 = parseFloat(document.getElementById('tp1016_line12').value) || 0;
+            
+            let line15 = l11 + l12;
+            document.getElementById('tp1016_line15').value = line15.toFixed(2);
+
+            // Validation check against form requirements ($2000+ deductions or $400+ credits)
+            if (line10 < 2000 && line15 < 400) {
+                thresholdWarning.style.display = 'block';
+            } else {
+                thresholdWarning.style.display = 'none';
+            }
+        }
+
+        // Attach listeners
+        numberInputs.forEach(input => {
+            input.addEventListener('input', calculateTotals);
+        });
+        nonResCheckbox.addEventListener('change', toggleNonResidentSection);
+
+        // Run initializations
+        calculateTotals();
+        toggleNonResidentSection();
+
+        // Pass Variables to Master Form
+        document.getElementById('tp1016-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let netDeductions = parseFloat(document.getElementById('tp1016_line10').value) || 0;
+            let totalCredits = parseFloat(document.getElementById('tp1016_line15').value) || 0;
+
+            // Basic identity
+            document.getElementById('master_tax_year').value = document.getElementById('tp1016_tax_year').value;
+            document.getElementById('master_applicant_name').value = document.getElementById('tp1016_applicant_name').value;
+            document.getElementById('master_payer_name').value = document.getElementById('tp1016_payer_name').value;
+
+            // Calculations & Thresholds
+            document.getElementById('master_line10').value = "$" + netDeductions.toFixed(2);
+            document.getElementById('master_line15').value = "$" + totalCredits.toFixed(2);
+            
+            if (netDeductions >= 2000 || totalCredits >= 400) {
+                document.getElementById('master_threshold_status').value = "Yes (Eligible)";
+            } else {
+                document.getElementById('master_threshold_status').value = "No (Below $2,000 / $400 limits)";
+            }
+
+            // Non-resident details
+            if (nonResCheckbox.checked) {
+                document.getElementById('master_non_resident_status').value = "Yes";
+                document.getElementById('master_non_resident_details').value = document.getElementById('tp1016_applicant_type').value;
+            } else {
+                document.getElementById('master_non_resident_status').value = "No";
+                document.getElementById('master_non_resident_details').value = "N/A";
+            }
+
+            alert("TP-1016-V variables successfully passed to the Master Form!");
+        });
+    </script>
+</body>
+</html>

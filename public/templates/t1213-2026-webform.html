@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2026 CRA Form T1213 - Webform</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; display: flex; gap: 30px; background-color: #f4f4f9; }
+        .form-container, .master-container { background: #fff; border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .form-container { width: 550px; }
+        .master-container { width: 450px; border: 2px solid #003366; height: fit-content; }
+        h3 { margin-top: 0; color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; }
+        h4 { margin-top: 15px; margin-bottom: 8px; color: #2c3e50; border-bottom: 1px dashed #ccc; padding-bottom: 3px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; color: #333; }
+        .help-text { font-size: 11px; color: #666; margin-bottom: 4px; display: block; }
+        input[type="number"], input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #aaa; border-radius: 4px; }
+        input[readonly] { background-color: #e9ecef; font-weight: bold; color: #003366; }
+        .radio-group { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; font-size: 13px; font-weight: bold; }
+        .radio-group input { width: auto; margin-right: 5px; }
+        .highlight-box { background-color: #f8f9fa; border: 1px solid #003366; padding: 15px; border-radius: 5px; margin-top: 10px; }
+        button { margin-top: 20px; padding: 10px 20px; width: 100%; background: #003366; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background: #002244; }
+        hr { margin: 20px 0; border: 0.5px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <!-- Source Form: CRA T1213 (2026) -->
+    <div class="form-container">
+        <h3>2026 Request to Reduce Tax Deductions at Source (T1213)</h3>
+        <form id="t1213-form">
+            
+            <div class="form-group">
+                <label>Employer/Payer Name</label>
+                <input type="text" id="t1213_employer" name="t1213_employer" required>
+            </div>
+
+            <h4>Part 2 - Request to reduce tax on</h4>
+            <div class="radio-group">
+                <input type="radio" id="tax_on_salary" name="t1213_tax_on" value="Salary" checked>
+                <label for="tax_on_salary">Salary</label>
+                
+                <input type="radio" id="tax_on_lump" name="t1213_tax_on" value="Lump Sum">
+                <label for="tax_on_lump">Lump sum</label>
+            </div>
+
+            <div class="form-group highlight-box" id="lump_sum_group" style="display: none;">
+                <label>Lump sum payment amount</label>
+                <span class="help-text">Enter payment details (e.g., bonus). If for an RRSP, do not exceed your RRSP deduction limit.</span>
+                <input type="number" id="t1213_lump_sum" name="t1213_lump_sum" value="0" min="0">
+            </div>
+            
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Do you work in a different province or territory than the one you live in?</label>
+                <div class="radio-group">
+                    <input type="radio" id="prov_yes" name="t1213_diff_prov" value="Yes"> <label for="prov_yes">Yes</label>
+                    <input type="radio" id="prov_no" name="t1213_diff_prov" value="No" checked> <label for="prov_no">No</label>
+                </div>
+            </div>
+
+            <div class="form-group highlight-box" id="prov_worked_group" style="display: none;">
+                <label>Province/Territory worked in</label>
+                <span class="help-text" style="color: #d9534f; font-weight: bold;">Notice: Form instructions require skipping Part 3. Your request will be evaluated solely based on your province difference.</span>
+                <input type="text" id="t1213_prov_worked" name="t1213_prov_worked">
+            </div>
+
+            <!-- Part 3: Deductions (Hidden if Diff Province = Yes) -->
+            <div id="part3_section">
+                <h4>Part 3 - Deductions from income and non-refundable tax credits</h4>
+                
+                <div class="form-group">
+                    <label>Line 1: Registered retirement savings plan (RRSP) contributions</label>
+                    <span class="help-text">Do not include employer-deducted contributions. Must not exceed deduction limit.</span>
+                    <input type="number" id="t1213_line1" name="t1213_line1" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 2: Child care expenses</label>
+                    <input type="number" id="t1213_line2" name="t1213_line2" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 3: Support payments</label>
+                    <input type="number" id="t1213_line3" name="t1213_line3" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 4: Employment expenses</label>
+                    <input type="number" id="t1213_line4" name="t1213_line4" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 5: Carrying charges and interest expenses on investment loans</label>
+                    <input type="number" id="t1213_line5" name="t1213_line5" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 6: Medical expenses</label>
+                    <input type="number" id="t1213_line6" name="t1213_line6" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 7: Donations</label>
+                    <input type="number" id="t1213_line7" name="t1213_line7" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 8: Clergy residence</label>
+                    <input type="number" id="t1213_line8" name="t1213_line8" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 9: RPP buying back contributions for past service</label>
+                    <input type="number" id="t1213_line9" name="t1213_line9" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 10: Foreign tax credit</label>
+                    <input type="number" id="t1213_line10" name="t1213_line10" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Line 11: Other deduction or non-refundable tax credit</label>
+                    <input type="number" id="t1213_line11" name="t1213_line11" value="0" min="0">
+                </div>
+
+                <div class="form-group highlight-box">
+                    <label>Total Deductions Requested (Lines 1 to 11)</label>
+                    <input type="number" id="t1213_total_deductions" readonly>
+                </div>
+
+                <hr>
+
+                <div class="form-group">
+                    <label>Line 12: Other income (no tax deducted at source)</label>
+                    <span class="help-text">e.g., interest, rental, or self-employment income. This offsets your deduction request.</span>
+                    <input type="number" id="t1213_line12" name="t1213_line12" value="0" min="0">
+                </div>
+
+                <div class="form-group highlight-box">
+                    <label>Net Deductions / Waiver Amount</label>
+                    <span class="help-text">Total Deductions minus Line 12. Must be verified by the CRA.</span>
+                    <input type="text" id="t1213_net_waiver" readonly>
+                </div>
+            </div>
+
+            <button type="submit">Submit T1213 to Master Form</button>
+        </form>
+    </div>
+
+    <!-- Master Form Display -->
+    <div class="master-container">
+        <h3>Master Form Record (T1213 Data)</h3>
+        <form id="master-form">
+            <div class="form-group">
+                <label>Employer / Payer</label>
+                <input type="text" id="master_employer" readonly>
+            </div>
+            <div class="form-group">
+                <label>Reduction Applied To</label>
+                <input type="text" id="master_tax_on" readonly>
+            </div>
+            <div class="form-group">
+                <label>Lump Sum Request Amount</label>
+                <input type="text" id="master_lump_sum" readonly>
+            </div>
+            <div class="form-group">
+                <label>Cross-Province Reduction Required?</label>
+                <input type="text" id="master_diff_prov" readonly>
+            </div>
+            
+            <hr>
+            <strong>Calculated Waiver Base (Part 3)</strong>
+            <div class="form-group" style="margin-top: 10px;">
+                <label>Total Requested Deductions (Lines 1-11)</label>
+                <input type="text" id="master_total_deductions" readonly>
+            </div>
+            <div class="form-group">
+                <label>Offsetting Other Income (Line 12)</label>
+                <input type="text" id="master_line12" readonly>
+            </div>
+            <div class="form-group">
+                <label>Net Waiver Evaluated Amount</label>
+                <input type="text" id="master_net_waiver" style="background-color: #d1ecf1; color: #0c5460;" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const formInputs = document.querySelectorAll('#t1213-form input[type="number"]');
+        const diffProvYes = document.getElementById('prov_yes');
+        const diffProvNo = document.getElementById('prov_no');
+        const part3Section = document.getElementById('part3_section');
+        const lumpRadio = document.getElementById('tax_on_lump');
+        const salaryRadio = document.getElementById('tax_on_salary');
+        const lumpGroup = document.getElementById('lump_sum_group');
+        const provGroup = document.getElementById('prov_worked_group');
+
+        // Handles show/hide constraints based on logic flags
+        function enforceConstraints() {
+            // Province check constraint
+            if (diffProvYes.checked) {
+                provGroup.style.display = 'block';
+                part3Section.style.display = 'none'; // Skip to Part 4
+            } else {
+                provGroup.style.display = 'none';
+                part3Section.style.display = 'block';
+            }
+
+            // Lump sum constraint
+            if (lumpRadio.checked) {
+                lumpGroup.style.display = 'block';
+            } else {
+                lumpGroup.style.display = 'none';
+                document.getElementById('t1213_lump_sum').value = 0;
+            }
+            
+            calculateNetWaiver();
+        }
+
+        // Handles mathematical constraint logic
+        function calculateNetWaiver() {
+            let totalDeductions = 0;
+            
+            // Sum Lines 1 through 11
+            for (let i = 1; i <= 11; i++) {
+                let inputEl = document.getElementById('t1213_line' + i);
+                let val = parseFloat(inputEl.value) || 0;
+                
+                // Constraint: Disallow negative values
+                if (val < 0) { val = 0; inputEl.value = 0; }
+                
+                totalDeductions += val;
+            }
+            document.getElementById('t1213_total_deductions').value = totalDeductions.toFixed(2);
+            
+            let line12Input = document.getElementById('t1213_line12');
+            let line12 = parseFloat(line12Input.value) || 0;
+            
+            // Constraint: Disallow negative values
+            if (line12 < 0) { line12 = 0; line12Input.value = 0; }
+            
+            // Constraint: Net Waiver cannot fall below 0
+            let netWaiver = Math.max(0, totalDeductions - line12);
+            document.getElementById('t1213_net_waiver').value = "$" + netWaiver.toFixed(2);
+        }
+
+        // Add Listeners
+        formInputs.forEach(input => {
+            input.addEventListener('input', calculateNetWaiver);
+        });
+
+        diffProvYes.addEventListener('change', enforceConstraints);
+        diffProvNo.addEventListener('change', enforceConstraints);
+        lumpRadio.addEventListener('change', enforceConstraints);
+        salaryRadio.addEventListener('change', enforceConstraints);
+
+        // Run Initialization
+        enforceConstraints();
+
+        // Handle Submission to pass variables to Master
+        document.getElementById('t1213-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            // Pass logical variables
+            document.getElementById('master_employer').value = document.getElementById('t1213_employer').value;
+            document.getElementById('master_tax_on').value = lumpRadio.checked ? "Lump Sum" : "Salary";
+            
+            document.getElementById('master_lump_sum').value = lumpRadio.checked 
+                ? "$" + parseFloat(document.getElementById('t1213_lump_sum').value || 0).toFixed(2) 
+                : "N/A";
+            
+            document.getElementById('master_diff_prov').value = diffProvYes.checked 
+                ? "Yes (Province: " + document.getElementById('t1213_prov_worked').value + ")" 
+                : "No";
+
+            // Pass financial variables
+            document.getElementById('master_total_deductions').value = diffProvYes.checked ? "N/A" : "$" + document.getElementById('t1213_total_deductions').value;
+            document.getElementById('master_line12').value = diffProvYes.checked ? "N/A" : "$" + parseFloat(document.getElementById('t1213_line12').value || 0).toFixed(2);
+            document.getElementById('master_net_waiver').value = diffProvYes.checked ? "Evaluation deferred to Part 4" : document.getElementById('t1213_net_waiver').value;
+
+            alert("T1213 variables successfully validated and passed to Master Form!");
+        });
+    </script>
+</body>
+</html>

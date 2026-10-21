@@ -1,0 +1,111 @@
+<svg viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" stop-opacity="1" />
+      <stop offset="60%" stop-color="#2563eb" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="centerHighlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#93c5fd" stop-opacity="1" />
+      <stop offset="40%" stop-color="#3b82f6" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.2" />
+    </radialGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Network Apple Icon Group (scaled and positioned) -->
+  <g transform="translate(10, 5) scale(0.7)">
+    <!-- Stem -->
+    <line x1="50" y1="22" x2="44" y2="9" stroke="url(#edgeGrad)" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="44" y1="9" x2="43" y2="7" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Apple Outline -->
+    <line x1="50" y1="22" x2="35" y2="19" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="50" y1="22" x2="65" y2="19" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="35" y1="19" x2="20" y2="28" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="65" y1="19" x2="80" y2="28" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="20" y1="28" x2="13" y2="44" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="80" y1="28" x2="87" y2="44" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="13" y1="44" x2="15" y2="64" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="87" y1="44" x2="85" y2="64" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="15" y1="64" x2="26" y2="83" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="85" y1="64" x2="74" y2="83" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="26" y1="83" x2="39" y2="91" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="74" y1="83" x2="61" y2="91" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="39" y1="91" x2="50" y2="87" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="61" y1="91" x2="50" y2="87" stroke="url(#edgeGrad)" stroke-width="2" />
+
+    <!-- Interior Mesh -->
+    <line x1="50" y1="22" x2="38" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="50" y1="22" x2="62" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="35" y1="19" x2="38" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="65" y1="19" x2="62" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="20" y1="28" x2="38" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="80" y1="28" x2="62" y2="38" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="20" y1="28" x2="27" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="80" y1="28" x2="73" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="13" y1="44" x2="27" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="87" y1="44" x2="73" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+
+    <line x1="38" y1="38" x2="62" y2="38" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="38" y1="38" x2="50" y2="54" stroke="url(#edgeGrad)" stroke-width="2.2" />
+    <line x1="62" y1="38" x2="50" y2="54" stroke="url(#edgeGrad)" stroke-width="2.2" />
+    <line x1="38" y1="38" x2="27" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="62" y1="38" x2="73" y2="52" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="27" y1="52" x2="50" y2="54" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="73" y1="52" x2="50" y2="54" stroke="url(#edgeGrad)" stroke-width="2" />
+
+    <line x1="27" y1="52" x2="15" y2="64" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="73" y1="52" x2="85" y2="64" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="27" y1="52" x2="36" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="73" y1="52" x2="64" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="50" y1="54" x2="36" y2="70" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="50" y1="54" x2="64" y2="70" stroke="url(#edgeGrad)" stroke-width="2" />
+    <line x1="36" y1="70" x2="64" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    
+    <line x1="15" y1="64" x2="36" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="85" y1="64" x2="64" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="26" y1="83" x2="36" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="74" y1="83" x2="64" y2="70" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="36" y1="70" x2="50" y2="87" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="64" y1="70" x2="50" y2="87" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="36" y1="70" x2="39" y2="91" stroke="url(#edgeGrad)" stroke-width="1.8" />
+    <line x1="64" y1="70" x2="61" y2="91" stroke="url(#edgeGrad)" stroke-width="1.8" />
+
+    <!-- Glows -->
+    <circle cx="50" cy="54" r="8" fill="url(#centerHighlight)" />
+    <circle cx="38" cy="38" r="6" fill="url(#nodeGlow)" />
+    <circle cx="62" cy="38" r="6" fill="url(#nodeGlow)" />
+
+    <!-- Nodes -->
+    <circle cx="43" cy="7" r="3.5" fill="#2563eb" stroke="#ffffff" stroke-width="1" />
+    <circle cx="50" cy="22" r="3" fill="#1d4ed8" />
+    <circle cx="35" cy="19" r="3" fill="#2563eb" />
+    <circle cx="65" cy="19" r="3" fill="#2563eb" />
+    <circle cx="20" cy="28" r="3.2" fill="#2563eb" />
+    <circle cx="80" cy="28" r="3.2" fill="#2563eb" />
+    <circle cx="13" cy="44" r="3.2" fill="#1d4ed8" />
+    <circle cx="87" cy="44" r="3.2" fill="#1d4ed8" />
+    <circle cx="15" cy="64" r="3.2" fill="#2563eb" />
+    <circle cx="85" cy="64" r="3.2" fill="#2563eb" />
+    <circle cx="26" cy="83" r="3.2" fill="#1e40af" />
+    <circle cx="74" cy="83" r="3.2" fill="#1e40af" />
+    <circle cx="39" cy="91" r="3.5" fill="#1e3a8a" />
+    <circle cx="61" cy="91" r="3.5" fill="#1e3a8a" />
+    <circle cx="50" cy="87" r="3" fill="#1d4ed8" />
+
+    <circle cx="27" cy="52" r="3.2" fill="#3b82f6" />
+    <circle cx="73" cy="52" r="3.2" fill="#3b82f6" />
+    <circle cx="36" cy="70" r="3.2" fill="#2563eb" />
+    <circle cx="64" cy="70" r="3.2" fill="#2563eb" />
+    <circle cx="38" cy="38" r="3.5" fill="#60a5fa" />
+    <circle cx="62" cy="38" r="3.5" fill="#60a5fa" />
+    <circle cx="50" cy="54" r="4.5" fill="#93c5fd" stroke="#2563eb" stroke-width="1.5" />
+  </g>
+
+  <!-- Typography -->
+  <text x="90" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#0f172a">Applep<tspan fill="#2563eb" font-weight="900">AI</tspan></text>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "short_name": "ApplepAI Trips",
+  "name": "ApplepAI PaieQuébec & GPS TripLog",
+  "icons": [],
+  "start_url": "/",
+  "background_color": "#09090b",
+  "theme_color": "#0ea5e9",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/"
+}

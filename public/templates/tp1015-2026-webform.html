@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2026 Québec TP-1015.3-V - Webform</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; display: flex; gap: 30px; background-color: #f4f4f9; }
+        .form-container, .master-container { background: #fff; border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .form-container { width: 520px; }
+        .master-container { width: 450px; border: 2px solid #008055; }
+        h3 { margin-top: 0; color: #008055; border-bottom: 2px solid #008055; padding-bottom: 5px; }
+        h4 { margin-top: 15px; margin-bottom: 5px; color: #2c3e50; border-bottom: 1px dashed #ccc; padding-bottom: 3px; }
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 4px; color: #333; }
+        .help-text { font-size: 11px; color: #666; margin-bottom: 4px; display: block; }
+        .warning-text { font-size: 11px; color: #d9534f; display: none; margin-top: 2px; font-weight: bold; }
+        input[type="number"], input[type="text"], select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #aaa; border-radius: 4px; }
+        input[readonly] { background-color: #e9ecef; font-weight: bold; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+        .checkbox-group input { width: auto; }
+        .sub-box { background-color: #f8f9fa; border: 1px solid #e0e0e0; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+        button { margin-top: 20px; padding: 10px 20px; width: 100%; background: #008055; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+        button:hover { background: #006644; }
+        hr { margin: 20px 0; border: 0.5px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <!-- Source Form: Québec TP-1015.3-V 2026 -->
+    <div class="form-container">
+        <h3>2026 Québec Source Deductions Return (TP-1015.3-V)</h3>
+        <form id="tp-carbon-form">
+            
+            <h4>Section 2: Personal Tax Credits</h4>
+            
+            <div class="form-group">
+                <label>Line 1: Basic personal amount</label>
+                <span class="help-text">Standard amount is $18,952 (Enter 0 if claimed with another employer).</span>
+                <input type="number" id="tp_line1" name="tp_line1" value="18952" max="18952" required>
+                <span class="warning-text" id="warning_tp_line1">Capped at maximum allowable $18,952.</span>
+            </div>
+
+            <div class="form-group">
+                <label>Line 2: Amount transferred from one spouse to another</label>
+                <span class="help-text">Max $18,952 minus spouse's estimated taxable income.</span>
+                <input type="number" id="tp_line2" name="tp_line2" value="0" max="18952">
+                <span class="warning-text" id="warning_tp_line2">Capped at maximum allowable $18,952.</span>
+            </div>
+
+            <div class="form-group">
+                <label>Line 3: Amount for dependants (Work Chart 1)</label>
+                <input type="number" id="tp_line3" name="tp_line3" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>Line 5: Severe and prolonged impairment amount</label>
+                <span class="help-text">Max $4,208 if certified by a health professional.</span>
+                <input type="number" id="tp_line5" name="tp_line5" value="0" max="4208">
+                <span class="warning-text" id="warning_tp_line5">Capped at maximum allowable $4,208.</span>
+            </div>
+
+            <!-- Work Chart 2 Details for Line 6 -->
+            <div class="sub-box">
+                <label style="color: #008055;">Work Chart 2 Calculation (Line 6)</label>
+                
+                <div class="form-group">
+                    <label>Line 70: Age Amount (65 or older)</label>
+                    <span class="help-text">$3,986 per eligible person (Max 2 people = $7,972).</span>
+                    <input type="number" id="tp_line70" name="tp_line70" value="0" max="7972">
+                    <span class="warning-text" id="warning_tp_line70">Capped at maximum $7,972 (2 x $3,986).</span>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="tp_living_alone" name="tp_living_alone">
+                    <label for="tp_living_alone">Line 75: Amount for a person living alone ($2,172)</label>
+                </div>
+
+                <div class="form-group">
+                    <label>Line 80: Amount for retirement income</label>
+                    <span class="help-text">1.25 x eligible income (Max $3,541).</span>
+                    <input type="number" id="tp_line80" name="tp_line80" value="0" max="3541">
+                    <span class="warning-text" id="warning_tp_line80">Capped at maximum allowable $3,541.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Line 81: Spouse retirement income amount</label>
+                    <span class="help-text">1.25 x spouse's eligible income (Max $3,541).</span>
+                    <input type="number" id="tp_line81" name="tp_line81" value="0" max="3541">
+                    <span class="warning-text" id="warning_tp_line81">Capped at maximum allowable $3,541.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Estimated Net Family Income</label>
+                    <span class="help-text">Used for reduction calculation (18.75% threshold over $42,955).</span>
+                    <input type="number" id="tp_family_income" name="tp_family_income" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Line 6: Net Age, Living Alone & Retirement Amount</label>
+                    <input type="number" id="tp_line6" name="tp_line6" value="0" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Line 9: Amount for career extension (Work Chart 3)</label>
+                <span class="help-text">For workers 65+ earning > $7,655 (Max $12,755).</span>
+                <input type="number" id="tp_line9" name="tp_line9" value="0" max="12755">
+                <span class="warning-text" id="warning_tp_line9">Capped at maximum allowable $12,755.</span>
+            </div>
+
+            <div class="form-group">
+                <label>Line 10: PERSONAL TAX CREDITS TOTAL</label>
+                <input type="number" id="tp_line10" name="tp_line10" readonly>
+            </div>
+
+            <hr>
+            <h4>Section 3: Additional Tax Withheld</h4>
+            <div class="form-group">
+                <label>Line 11: Additional income tax to be withheld per paycheque</label>
+                <input type="number" id="tp_line11" name="tp_line11" value="0">
+            </div>
+
+            <hr>
+            <h4>Section 4: Deductions</h4>
+            <div class="form-group">
+                <label>Line 14: Housing deduction for residents of designated remote areas</label>
+                <input type="number" id="tp_line14" name="tp_line14" value="0">
+            </div>
+            <div class="form-group">
+                <label>Line 15: Deductible support payments</label>
+                <input type="number" id="tp_line15" name="tp_line15" value="0">
+            </div>
+            <div class="form-group">
+                <label>Line 19: TOTAL DEDUCTIONS (Lines 14 + 15)</label>
+                <input type="number" id="tp_line19" name="tp_line19" readonly>
+            </div>
+
+            <hr>
+            <h4>Section 5: Exemption</h4>
+            <div class="checkbox-group">
+                <input type="checkbox" id="tp_box20" name="tp_box20">
+                <label for="tp_box20">Box 20: Request exemption from source deductions for 2026</label>
+            </div>
+
+            <button type="submit">Submit Québec Form to Master</button>
+        </form>
+    </div>
+
+    <!-- Master Form Display -->
+    <div class="master-container">
+        <h3>Master Form Record</h3>
+        <form id="master-form">
+            <div class="form-group">
+                <label>Québec Personal Tax Credits (Line 10)</label>
+                <input type="text" id="master_tp_line10" readonly>
+            </div>
+            <div class="form-group">
+                <label>Additional Tax Withheld / Pay (Line 11)</label>
+                <input type="text" id="master_tp_line11" readonly>
+            </div>
+            <div class="form-group">
+                <label>Total Deductions (Line 19)</label>
+                <input type="text" id="master_tp_line19" readonly>
+            </div>
+            <div class="form-group">
+                <label>Tax Source Exemption Requested (Box 20)</label>
+                <input type="text" id="master_tp_box20" readonly>
+            </div>
+
+            <hr>
+            <strong>Sub-Calculation Breakdown</strong>
+            <div class="form-group">
+                <label>Net Age, Living Alone & Retirement (Line 6)</label>
+                <input type="text" id="master_tp_line6" readonly>
+            </div>
+            <div class="form-group">
+                <label>Career Extension Amount (Line 9)</label>
+                <input type="text" id="master_tp_line9" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const formInputs = document.querySelectorAll('#tp-carbon-form input[type="number"]');
+        
+        // Function to enforce legal maximum limits on individual lines
+        function enforceMaxConstraints(input) {
+            const maxVal = parseFloat(input.getAttribute('max'));
+            const warningSpan = document.getElementById('warning_' + input.id);
+            
+            if (maxVal && parseFloat(input.value) > maxVal) {
+                input.value = maxVal;
+                if(warningSpan) warningSpan.style.display = 'block';
+            } else {
+                if(warningSpan) warningSpan.style.display = 'none';
+            }
+        }
+
+        // Calculate Work Chart 2 (Line 6) with family income clawback
+        function calculateLine6() {
+            let line70 = parseFloat(document.getElementById('tp_line70').value) || 0;
+            let line75 = document.getElementById('tp_living_alone').checked ? 2172 : 0;
+            let line80 = parseFloat(document.getElementById('tp_line80').value) || 0;
+            let line81 = parseFloat(document.getElementById('tp_line81').value) || 0;
+            
+            let line85_sum = line70 + line75 + line80 + line81;
+            
+            // Family Income Reduction Calculation (18.75% of income over $42,955)
+            let familyIncome = parseFloat(document.getElementById('tp_family_income').value) || 0;
+            let excessIncome = Math.max(0, familyIncome - 42955);
+            let reduction = excessIncome * 0.1875;
+            
+            let netLine6 = Math.max(0, line85_sum - reduction);
+            document.getElementById('tp_line6').value = netLine6.toFixed(2);
+            return netLine6;
+        }
+
+        // Calculate Form Grand Totals
+        function calculateTotals() {
+            // Line 19 Deductions
+            let line14 = parseFloat(document.getElementById('tp_line14').value) || 0;
+            let line15 = parseFloat(document.getElementById('tp_line15').value) || 0;
+            document.getElementById('tp_line19').value = (line14 + line15).toFixed(2);
+
+            // Line 10 Personal Tax Credits Sum
+            let line1 = parseFloat(document.getElementById('tp_line1').value) || 0;
+            let line2 = parseFloat(document.getElementById('tp_line2').value) || 0;
+            let line3 = parseFloat(document.getElementById('tp_line3').value) || 0;
+            let line5 = parseFloat(document.getElementById('tp_line5').value) || 0;
+            let line6 = calculateLine6();
+            let line9 = parseFloat(document.getElementById('tp_line9').value) || 0;
+
+            let totalCredits = line1 + line2 + line3 + line5 + line6 + line9;
+            document.getElementById('tp_line10').value = totalCredits.toFixed(2);
+        }
+
+        // Add Listeners
+        formInputs.forEach(input => {
+            input.addEventListener('input', (e) => {
+                enforceMaxConstraints(e.target);
+                calculateTotals();
+            });
+        });
+
+        document.getElementById('tp_living_alone').addEventListener('change', calculateTotals);
+
+        // Run calculation on load
+        calculateTotals();
+
+        // Handle Form Submission to pass variables to Master
+        document.getElementById('tp-carbon-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const formData = new FormData(this);
+            
+            // Pass financial variables
+            document.getElementById('master_tp_line10').value = "$" + document.getElementById('tp_line10').value;
+            document.getElementById('master_tp_line11').value = "$" + parseFloat(formData.get('tp_line11') || 0).toFixed(2);
+            document.getElementById('master_tp_line19').value = "$" + document.getElementById('tp_line19').value;
+            document.getElementById('master_tp_line6').value = "$" + document.getElementById('tp_line6').value;
+            document.getElementById('master_tp_line9').value = "$" + parseFloat(formData.get('tp_line9') || 0).toFixed(2);
+            
+            // Pass checkbox exemption status
+            document.getElementById('master_tp_box20').value = document.getElementById('tp_box20').checked ? "Requested (Yes)" : "No";
+
+            alert("Québec TP-1015.3-V variables successfully passed to Master Form!");
+        });
+    </script>
+</body>
+</html>
